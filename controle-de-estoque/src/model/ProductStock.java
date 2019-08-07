@@ -13,12 +13,24 @@ import java.util.ArrayList;
  */
 public class ProductStock {
     
-    private int registration;
-    private ArrayList<Product> products = null;
-    private ArrayList<User> users = null;
+    private static ProductStock stock = null;
+    private ArrayList<Product> products;
+    private ArrayList<User> users;
     
-    ProductStock(int registration){
-        this.registration = registration;
+    private ProductStock(){
+        this.products = null;
+        this.users = null;
+    }
+    
+    public static ProductStock getStock(){
+        
+        if(stock == null){
+            stock = new ProductStock();
+            return stock;
+        } else {
+            return stock;
+        }
+        
     }
     
     public ArrayList<Product> getProducts(){
