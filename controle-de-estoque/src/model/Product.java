@@ -11,25 +11,25 @@ package model;
  */
 public class Product {
     
-    int registration;
-    String name;
-    String description;
+    private int registration;
+    private String name;
+    private String description;
     
-    Product(int registration, String name, String description){
+    public Product(int registration, String name, String description){
         this.registration = registration;
         this.name = name;
         this.description = description;
     }
     
-    int getRegistration(){
+    public int getRegistration(){
         return this.registration;
     }
     
-    String getName(){
+    public String getName(){
         return this.name;
     }
     
-    String getDescription(){
+    public String getDescription(){
         return this.description;
     }
 }

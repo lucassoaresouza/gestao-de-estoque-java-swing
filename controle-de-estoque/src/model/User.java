@@ -11,19 +11,19 @@ package model;
  */
 public class User {
     
-    int registration;
-    String name;
+    private int registration;
+    private String name;
     
-    User(int registration, String name){
+    public User(int registration, String name){
         this.registration = registration;
         this.name = name;
     }
     
-    int getRegistration(){
+    public int getRegistration(){
         return this.registration;
     }
     
-    String getName(){
+    public String getName(){
         return this.name;
     }
     
