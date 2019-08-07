@@ -49,6 +49,10 @@ public class ProductStock {
         }
     }
     
+    public boolean removeProduct(Product product){
+        return products.removeIf(prod -> (product.getRegistration() == prod.getRegistration()));
+    }
+    
     public boolean addUser(User user){
         boolean userExists;
         userExists = checkUserExistence(user);
@@ -56,7 +60,11 @@ public class ProductStock {
             return users.add(user);
         } else {
             return false;
-        }        
+        }
+    }
+    
+    public boolean removeUser(User user){
+        return users.removeIf(usr -> (user.getRegistration() == usr.getRegistration()));
     }
     
     private boolean checkProductExistence(Product product){
