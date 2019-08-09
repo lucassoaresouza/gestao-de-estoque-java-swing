@@ -14,11 +14,32 @@ public class Product {
     private int registration;
     private String name;
     private String description;
+    private int quantity;
     
-    public Product(int registration, String name, String description){
+    public Product(int registration, String name, String description, int quantity){
         this.registration = registration;
         this.name = name;
         this.description = description;
+        this.quantity = quantity;
+    }
+    
+    
+    public boolean addQuantity(){
+        try{
+            this.quantity += 1;
+            return true;
+        } catch(Exception e){
+            return false;
+        }
+    }
+    
+    public boolean removeQuantity(){
+        try{
+            this.quantity -= 1;
+            return true;
+        } catch(Exception e){
+            return false;
+        }
     }
     
     public int getRegistration(){
