@@ -5,6 +5,7 @@
  */
 package controller;
 
+import model.Product;
 import model.ProductStock;
 import model.User;
 
@@ -17,11 +18,41 @@ public class StockController {
     private User user;
     private ProductStock stock;
     
-    StockController(){
+    public StockController(){
         this.user = new User(11111,"Default User");
         this.stock = ProductStock.getStock();
     }
     
     public void stockIndex(){}
+    
+    public String getUserName(){
+        return this.user.getName();
+    }
+    
+    public String getUserRegistration(){
+        return Integer.toString(this.user.getRegistration());
+    }
+    
+    private Product newProduct(int register, String name, String description, int quantity){
+        try{
+            Product prod = new Product(register, name, description, quantity);
+            System.out.println("Produto criado com sucesso!");
+            return prod;
+        } catch(Exception e){
+            System.out.println("O produto não pôde ser criado!");
+            return null;
+        }   
+    }
+    
+    private void addProductToStock(Product prod){
+        
+        try{
+            this.stock.addProduct(prod);
+            System.out.println("O produto foi adicionado com sucesso!");
+        } catch(Exception e){
+            System.out.println("O produto nao pode ser adicionado!");
+        }
+        
+    }
     
 }
