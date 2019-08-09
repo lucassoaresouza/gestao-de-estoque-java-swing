@@ -23,13 +23,13 @@ import org.junit.runners.Parameterized;
 public class addProductToStockTest {
     
     private ProductStock stock;
-    private int register = 0;
+    private String register = "";
     private String name = "";
     private String description = "";
     private int quantity = 0;
     private boolean result = false;
     
-    public addProductToStockTest(int reg, String nm, String dscpt, int quantity, boolean result){
+    public addProductToStockTest(String reg, String nm, String dscpt, int quantity, boolean result){
         this.register = reg;
         this.name = nm;
         this.description = dscpt;
@@ -45,12 +45,12 @@ public class addProductToStockTest {
     @Parameterized.Parameters 
     public static Collection testData(){
         return Arrays.asList(new Object[][]{
-            {1,"Cafe","Po de cafe", 1, true},
-            {2,"Cha","Po de cha", 1,true},
-            {3,"Achocolatado","Po de chocolate ao leite", 1,true},
-            {1,"Cafe","Po de cafe", 1,false},
-            {2,"Cha","Po de cha", 1,false},
-            {3,"Achocolatado","Po de chocolate ao leite", 1,false}
+            {"1","Cafe","Po de cafe", 1, true},
+            {"2","Cha","Po de cha", 1,true},
+            {"3","Achocolatado","Po de chocolate ao leite", 1,true},
+            {"1","Cafe","Po de cafe", 1,false},
+            {"2","Cha","Po de cha", 1,false},
+            {"3","Achocolatado","Po de chocolate ao leite", 1,false}
         });
     }
     

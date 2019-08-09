@@ -6,6 +6,7 @@
 package view;
 
 import controller.StockController;
+import model.Product;
 
 /**
  *
@@ -18,19 +19,24 @@ public class IndexStockView extends javax.swing.JFrame {
     public IndexStockView() {
         this.stockController = new StockController(); 
         initComponents();
-        initUserDataBar();
-        initStockDataBar();
+        updateUserDataBar();
+        updateStockDataBar();
         setResizable(false);
     }
 
-    public void initUserDataBar(){
+    public void updateUserDataBar(){
         userName.setText(stockController.getUserName());
         userRegister.setText(stockController.getUserRegistration());
     }
     
-    public void initStockDataBar(){
+    public void updateStockDataBar(){
         productQuantity.setText(Integer.toString(stockController.getProductQuantity()));
         volumesQuantity.setText(Integer.toString(stockController.getTotalVolumesQuantity()));
+    }
+    
+    public void newProduct(Product prod){
+        stockController.addProductToStock(prod);
+        System.out.println("Produto adicionado ao estoque");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -183,6 +189,7 @@ public class IndexStockView extends javax.swing.JFrame {
         newProduct.setResizable(false);
         newProduct.setLocationRelativeTo(null);
         newProduct.setVisible(true);
+        updateStockDataBar();
         //newProductView.setVisible(true);
         
     }//GEN-LAST:event_newProductActionPerformed

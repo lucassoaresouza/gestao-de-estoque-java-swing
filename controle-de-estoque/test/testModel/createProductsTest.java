@@ -20,12 +20,12 @@ import org.junit.runners.Parameterized;
 @RunWith(Parameterized.class)
 public class createProductsTest {
     
-    private int registration = 0;
+    private String registration = "";
     private String name  = "";
     private String description = "";
     private int quantity = 0;
     
-    public createProductsTest(int reg, String nm, String dscpt, int qtd){
+    public createProductsTest(String reg, String nm, String dscpt, int qtd){
         this.registration = reg;
         this.name = nm;
         this.description = dscpt;
@@ -35,9 +35,9 @@ public class createProductsTest {
     @Parameterized.Parameters
     public static Collection testData(){
         return Arrays.asList(new Object[][]{
-            {1,"Cafe","Po de cafe",1},
-            {2,"Cha","Po de cha",1},
-            {3,"Achocolatado","Po de chocolate ao leite",1}
+            {"1","Cafe","Po de cafe",1},
+            {"2","Cha","Po de cha",1},
+            {"3","Achocolatado","Po de chocolate ao leite",1}
         });
     }
 

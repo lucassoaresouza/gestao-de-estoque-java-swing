@@ -5,6 +5,8 @@
  */
 package view;
 
+import model.Product;
+
 /**
  *
  * @author lucas-souza
@@ -14,9 +16,11 @@ public class NewProductView extends javax.swing.JDialog {
     /**
      * Creates new form NewProductView
      */
+    IndexStockView stockView;
     
-    public NewProductView(java.awt.Frame parent, boolean modal) {
+    public NewProductView(IndexStockView parent, boolean modal) {
         super(parent, modal);
+        stockView = parent;
         initComponents();
     }
 
@@ -178,7 +182,12 @@ public class NewProductView extends javax.swing.JDialog {
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        // TODO add your handling code here:
+        String productReg = productRegister.getText();
+        String productNm = productRegister.getText();
+        String productDscpt = productDescription.getText();
+        int productQntd = Integer.valueOf(productQuantity.getText());
+        Product newProd = new Product(productReg, productNm, productDscpt, productQntd);
+        stockView.newProduct(newProd);
     }//GEN-LAST:event_saveButtonActionPerformed
 
     /**
@@ -212,7 +221,7 @@ public class NewProductView extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                NewProductView dialog = new NewProductView(new javax.swing.JFrame(), true);
+                NewProductView dialog = new NewProductView(new IndexStockView(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

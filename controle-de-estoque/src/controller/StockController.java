@@ -33,7 +33,7 @@ public class StockController {
         return Integer.toString(this.user.getRegistration());
     }
     
-    private Product newProduct(int register, String name, String description, int quantity){
+    private Product newProduct(String register, String name, String description, int quantity){
         try{
             Product prod = new Product(register, name, description, quantity);
             System.out.println("Produto criado com sucesso!");
@@ -44,7 +44,7 @@ public class StockController {
         }   
     }
     
-    private void addProductToStock(Product prod){
+    public void addProductToStock(Product prod){
         
         try{
             this.stock.addProduct(prod);
@@ -60,7 +60,7 @@ public class StockController {
     }
     
     public int getTotalVolumesQuantity(){
-        if(this.getProductQuantity() > 1){
+        if(this.getProductQuantity() > 0){
             int totalVolumes = 0;
             for(Product prod : stock.getProducts()){
                 totalVolumes += prod.getQuantity();

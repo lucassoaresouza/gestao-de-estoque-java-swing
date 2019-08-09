@@ -33,11 +33,11 @@ public class removeProductFromStockTest {
     @Before
     public void setUp() {
         stock = ProductStock.getStock();
-        prod1 = new Product(1,"Cafe","Po de cafe",1);
-        prod2 = new Product(2,"Cha","Po de cha",1);
-        prod3 = new Product(3,"Achocolatado","Po de chocolate ao leite",1);
-        prod4 = new Product(4,"Arroz","Graos de Arroz",1);
-        prod5 = new Product(5, "Chafe", "Cha de cafe",1);
+        prod1 = new Product("1","Cafe","Po de cafe",1);
+        prod2 = new Product("2","Cha","Po de cha",1);
+        prod3 = new Product("3","Achocolatado","Po de chocolate ao leite",1);
+        prod4 = new Product("4","Arroz","Graos de Arroz",1);
+        prod5 = new Product("5", "Chafe", "Cha de cafe",1);
         
         stock.addProduct(prod1);
         stock.addProduct(prod2);
