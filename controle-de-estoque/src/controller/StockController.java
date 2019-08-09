@@ -55,4 +55,20 @@ public class StockController {
         
     }
     
+    public int getProductQuantity(){
+        return stock.getProducts().size();
+    }
+    
+    public int getTotalVolumesQuantity(){
+        if(this.getProductQuantity() > 1){
+            int totalVolumes = 0;
+            for(Product prod : stock.getProducts()){
+                totalVolumes += prod.getQuantity();
+            }
+            return totalVolumes;
+        } else {
+            return 0;
+        }
+    }
+    
 }

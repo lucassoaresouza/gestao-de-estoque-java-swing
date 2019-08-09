@@ -79,24 +79,68 @@
                       <Component id="userRegister" pref="126" max="32767" attributes="0"/>
                       <Component id="userName" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="812" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="productTypeQuantity" min="-2" pref="241" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="productQuantity" min="-2" pref="90" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="totalProductQuantity" min="-2" pref="215" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="volumesQuantity" min="-2" pref="90" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jSeparator1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
+                  <Component id="newProduct" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="266" max="-2" attributes="0"/>
+                      <Component id="jSeparator2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="922" max="32767" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="userNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="userName" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="userRegisterLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="userRegister" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Component id="jSeparator1" alignment="1" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="productQuantity" alignment="1" min="-2" pref="17" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="userNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="userName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="productTypeQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="userRegisterLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="userRegister" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="totalProductQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="volumesQuantity" min="-2" pref="17" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                          <Component id="newProduct" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace pref="23" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Component id="jSeparator2" alignment="0" pref="89" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -116,6 +160,39 @@
         </Component>
         <Component class="javax.swing.JLabel" name="userRegister">
         </Component>
+        <Component class="javax.swing.JSeparator" name="jSeparator1">
+          <Properties>
+            <Property name="orientation" type="int" value="1"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="productTypeQuantity">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Quantidade de tipos de produtos:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="totalProductQuantity">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Quantidade total de volumes:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="productQuantity">
+        </Component>
+        <Component class="javax.swing.JLabel" name="volumesQuantity">
+        </Component>
+        <Component class="javax.swing.JSeparator" name="jSeparator2">
+          <Properties>
+            <Property name="orientation" type="int" value="1"/>
+          </Properties>
+        </Component>
+        <Component class="java.awt.Button" name="newProduct">
+          <Properties>
+            <Property name="actionCommand" type="java.lang.String" value="newProduct"/>
+            <Property name="label" type="java.lang.String" value="Novo Produto"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newProductActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="stockLabel">
@@ -128,7 +205,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="1024" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="1041" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
