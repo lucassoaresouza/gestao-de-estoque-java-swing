@@ -34,8 +34,8 @@ public class IndexStockView extends javax.swing.JFrame {
         volumesQuantity.setText(Integer.toString(stockController.getTotalVolumesQuantity()));
     }
     
-    public void newProduct(Product prod){
-        stockController.addProductToStock(prod);
+    public void newProduct(String productReg,String productNm, String productDscpt, int productQntd){
+        stockController.addProductToStock(productReg, productNm, productDscpt, productQntd);
         System.out.println("Produto adicionado ao estoque");
     }
     @SuppressWarnings("unchecked")

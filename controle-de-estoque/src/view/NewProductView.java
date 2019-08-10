@@ -17,12 +17,23 @@ public class NewProductView extends javax.swing.JDialog {
      * Creates new form NewProductView
      */
     IndexStockView stockView;
+    //FeedbackView feedback;
+    String productReg;
+    String productNm;
+    String productDscpt;
+    int productQntd;
     
     public NewProductView(IndexStockView parent, boolean modal) {
         super(parent, modal);
+        //initFeedback(parent);
         stockView = parent;
         initComponents();
+        cleanTextFields();
     }
+    
+//    private void initFeedback(IndexStockView parent){
+//        feedback = new FeedbackView(parent, true);
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -178,18 +189,39 @@ public class NewProductView extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
-        // TODO add your handling code here:
+        cancelNewProduct();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        String productReg = productRegister.getText();
-        String productNm = productRegister.getText();
-        String productDscpt = productDescription.getText();
-        int productQntd = Integer.valueOf(productQuantity.getText());
-        Product newProd = new Product(productReg, productNm, productDscpt, productQntd);
-        stockView.newProduct(newProd);
+        if(getNewProductData()){
+            Product newProd = new Product(productReg, productNm, productDscpt, productQntd);
+            stockView.newProduct(productReg, productNm, productDscpt, productQntd);
+            //feedback.setVisible(true);
+            cleanTextFields();
+        } else {
+            // do nothing
+        }
     }//GEN-LAST:event_saveButtonActionPerformed
 
+    private void cancelNewProduct(){
+        cleanTextFields();
+        this.setVisible(false);
+    }
+    
+    private void cleanTextFields(){
+        productRegister.setText("");
+        productName.setText("");
+        productDescription.setText("");
+        productQuantity.setText("");
+    }
+    
+    private boolean getNewProductData(){
+        productReg = productRegister.getText();
+        productNm = productRegister.getText();
+        productDscpt = productDescription.getText();
+        productQntd = Integer.valueOf(productQuantity.getText());
+        return true;
+    }
     /**
      * @param args the command line arguments
      */

@@ -44,9 +44,10 @@ public class StockController {
         }   
     }
     
-    public void addProductToStock(Product prod){
+    public void addProductToStock(String productReg,String productNm, String productDscpt, int productQntd){
         
         try{
+            Product prod = newProduct(productReg, productNm, productDscpt, productQntd);
             this.stock.addProduct(prod);
             System.out.println("O produto foi adicionado com sucesso!");
         } catch(Exception e){
