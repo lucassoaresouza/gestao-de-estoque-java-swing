@@ -49,12 +49,13 @@ public class TableModel extends AbstractTableModel{
         
     }
     
-    public void updateStockDataTable(){
+    public void addRowStockDataTable(){
         this.fireTableDataChanged();
     }
     
-    public void deleteStockData(int row){
+    public void updateStockDataTable(int row){
         this.fireTableRowsDeleted(row, row);
+        this.fireTableRowsUpdated(row, row);
     }
     
 }

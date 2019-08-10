@@ -33,6 +33,15 @@ public class ProductStock {
         return this.products;
     }
     
+    public Product getProductByIndex(int index){
+        try{
+            return products.get(index);
+        } catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
     public boolean addProduct(Product product){
         boolean productExists;        
         productExists = checkProductExistence(product);

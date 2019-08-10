@@ -24,7 +24,7 @@ public class IndexStockView extends javax.swing.JFrame {
         updateUserDataBar();
         updateStockDataBar();
         setResizable(false);
-        stockCtrl.getTableModel().updateStockDataTable();
+        stockCtrl.getTableModel().addRowStockDataTable();
         stockData.setModel(stockCtrl.getTableModel());
         
     }
@@ -45,12 +45,12 @@ public class IndexStockView extends javax.swing.JFrame {
     
     public void newProduct(String prodReg,String prodNm, String prodDscpt, int prodQntd){
         stockCtrl.addProductToStock(prodReg, prodNm, prodDscpt, prodQntd);
-        stockCtrl.getTableModel().updateStockDataTable();
+        stockCtrl.getTableModel().addRowStockDataTable();
     }
     
     public void deleteSelectedProduct(int index){
         stockCtrl.removeProduct(index);
-        stockCtrl.getTableModel().deleteStockData(index);
+        stockCtrl.getTableModel().updateStockDataTable(index);
     }
     
     private void callFeedback(String message){
@@ -318,11 +318,33 @@ public class IndexStockView extends javax.swing.JFrame {
     }//GEN-LAST:event_prodDeleteActionPerformed
 
     private void prodRemVolumnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prodRemVolumnActionPerformed
-        // TODO add your handling code here:
+        int row = stockData.getSelectedRow();
+        if(row != -1){
+            if(getProductVolum(row) > 1){
+                stockCtrl.getProductByIndex(row).removeQuantity();
+                stockCtrl.getTableModel().updateStockDataTable(row);
+                updateStockDataBar();
+            } else {
+                callFeedback("Impossível remover:\nO produto possui somente"
+                        + "um único volume!");
+            }
+        } else {
+            callFeedback("Nenhuma linha foi selecionada!");
+        }
     }//GEN-LAST:event_prodRemVolumnActionPerformed
 
+    private int getProductVolum(int index){
+        return stockCtrl.getProductByIndex(index).getQuantity();
+    }
+    
     private void prodAddVolumn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prodAddVolumn1ActionPerformed
-        // TODO add your handling code here:
+        if(stockData.getSelectedRow() != -1){
+           stockCtrl.getProductByIndex(stockData.getSelectedRow()).addQuantity();
+           stockCtrl.getTableModel().updateStockDataTable(stockData.getSelectedRow());
+           updateStockDataBar();
+        } else {
+            callFeedback("Nenhuma linha foi selecionada!");
+        }
     }//GEN-LAST:event_prodAddVolumn1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

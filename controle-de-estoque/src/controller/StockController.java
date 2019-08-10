@@ -84,6 +84,15 @@ public class StockController {
         return this.tableModel;
     }
     
+    public Product getProductByIndex(int index){
+        
+        try{
+            return stock.getProductByIndex(index);
+        } catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
     
     public boolean removeProduct(int index){
         if(stock.removeProduct(index)){
