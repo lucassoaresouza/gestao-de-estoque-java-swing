@@ -46,14 +46,17 @@ public class removeProductFromStockTest {
     
     @Test
     public void testRemovingProductFromStockTrue() {
-        assertTrue(stock.removeProduct(1));
-        assertTrue(stock.removeProduct(2));
-        assertTrue(stock.removeProduct(3));
+        int size = stock.getProducts().size();
+        for(int i = 0; i <= 2; i++){
+            int auxSize = stock.getProducts().size();
+            stock.removeProduct(0);
+            assertEquals(auxSize-1,stock.getProducts().size());
+        }
     }
     
     @Test
     public void testRemovingProductFromStockFalse(){
-        assertFalse(stock.removeProduct(4));
-        assertFalse(stock.removeProduct(5));
+        assertFalse(stock.removeProduct(6));
+        assertFalse(stock.removeProduct(10));
     }
 }

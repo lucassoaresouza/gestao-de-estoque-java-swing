@@ -53,11 +53,10 @@ public class ProductStock {
     }
     
     public boolean removeProduct(int index){
-        try{
+        if(index < products.size()){  
             products.remove(index);
             return true;
-        } catch(Exception e){
-            e.printStackTrace();
+        } else {
             return false;
         }
     }
