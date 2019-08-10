@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package testModel;
+package tests;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,12 +17,14 @@ import org.junit.runners.Suite;
  * @author lucas-souza
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({testModel.createProductsTest.class, 
-                     testModel.createProductStockTest.class, 
-                     testModel.addProductToStockTest.class,
-                     testModel.removeProductFromStockTest.class,
-                     testModel.UpdateProductVolumnTest.class
+@Suite.SuiteClasses({tests.createProductsTest.class, 
+                     tests.createProductStockTest.class, 
+                     tests.addProductToStockTest.class,
+                     tests.removeProductFromStockTest.class,
+                     tests.UpdateProductVolumnTest.class,
+                     tests.ShowingProductDataTest.class
                     })
+
 public class AllTests {
 
     @BeforeClass
