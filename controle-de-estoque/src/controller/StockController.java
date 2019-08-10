@@ -84,4 +84,13 @@ public class StockController {
         return this.tableModel;
     }
     
+    
+    public boolean removeProduct(int index){
+        if(stock.removeProduct(index)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
 }

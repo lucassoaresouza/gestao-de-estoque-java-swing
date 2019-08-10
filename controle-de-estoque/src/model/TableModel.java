@@ -53,4 +53,8 @@ public class TableModel extends AbstractTableModel{
         this.fireTableDataChanged();
     }
     
+    public void deleteStockData(int row){
+        this.fireTableRowsDeleted(row, row);
+    }
+    
 }

@@ -43,8 +43,14 @@ public class ProductStock {
         }
     }
     
-    public boolean removeProduct(Product product){
-        return products.removeIf(prod -> (product.getRegistration() == prod.getRegistration()));
+    public boolean removeProduct(int index){
+        try{
+            products.remove(index);
+            return true;
+        } catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 
     private boolean checkProductExistence(Product product){

@@ -7,6 +7,7 @@ package view;
 
 import controller.StockController;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import model.Product;
 
 /**
@@ -46,6 +47,16 @@ public class IndexStockView extends javax.swing.JFrame {
         stockCtrl.addProductToStock(prodReg, prodNm, prodDscpt, prodQntd);
         stockCtrl.getTableModel().updateStockDataTable();
     }
+    
+    public void deleteSelectedProduct(int index){
+        stockCtrl.removeProduct(index);
+        stockCtrl.getTableModel().deleteStockData(index);
+    }
+    
+    private void callFeedback(String message){
+        JOptionPane.showMessageDialog(null,message);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -65,6 +76,10 @@ public class IndexStockView extends javax.swing.JFrame {
         stockLabel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         stockData = new javax.swing.JTable();
+        prodRemVolumn = new java.awt.Button();
+        prodDelete = new java.awt.Button();
+        prodUpdate1 = new java.awt.Button();
+        prodAddVolumn1 = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle de Stoque");
@@ -118,11 +133,11 @@ public class IndexStockView extends javax.swing.JFrame {
                         .addComponent(totalProductQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(volumesQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(135, 135, 135)
+                .addGap(139, 139, 139)
                 .addComponent(newProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(156, 156, 156))
+                .addGap(152, 152, 152))
             .addGroup(navBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(navBarLayout.createSequentialGroup()
                     .addGap(266, 266, 266)
@@ -150,7 +165,7 @@ public class IndexStockView extends javax.swing.JFrame {
                                 .addComponent(totalProductQuantity))
                             .addComponent(volumesQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(navBarLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                        .addGap(29, 29, 29)
                         .addComponent(newProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
             .addGroup(navBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,21 +211,69 @@ public class IndexStockView extends javax.swing.JFrame {
             stockData.getColumnModel().getColumn(3).setPreferredWidth(10);
         }
 
+        prodRemVolumn.setLabel("Remover Volume");
+        prodRemVolumn.setName(""); // NOI18N
+        prodRemVolumn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prodRemVolumnActionPerformed(evt);
+            }
+        });
+
+        prodDelete.setLabel("Deletar Produto");
+        prodDelete.setName(""); // NOI18N
+        prodDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prodDeleteActionPerformed(evt);
+            }
+        });
+
+        prodUpdate1.setLabel("Atualizar Produto");
+        prodUpdate1.setName(""); // NOI18N
+
+        prodAddVolumn1.setLabel("Adicionar Volume");
+        prodAddVolumn1.setName(""); // NOI18N
+        prodAddVolumn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prodAddVolumn1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout stockLabelLayout = new javax.swing.GroupLayout(stockLabel);
         stockLabel.setLayout(stockLabelLayout);
         stockLabelLayout.setHorizontalGroup(
             stockLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(stockLabelLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 913, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addGroup(stockLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(stockLabelLayout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 913, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(stockLabelLayout.createSequentialGroup()
+                        .addGap(324, 324, 324)
+                        .addGroup(stockLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(stockLabelLayout.createSequentialGroup()
+                                .addComponent(prodRemVolumn, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(prodAddVolumn1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(stockLabelLayout.createSequentialGroup()
+                                .addComponent(prodDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(prodUpdate1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(227, Short.MAX_VALUE))
         );
         stockLabelLayout.setVerticalGroup(
             stockLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(stockLabelLayout.createSequentialGroup()
                 .addGap(73, 73, 73)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGroup(stockLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(prodRemVolumn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prodAddVolumn1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(stockLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(prodDelete, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prodUpdate1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -244,12 +307,34 @@ public class IndexStockView extends javax.swing.JFrame {
         updateStockDataBar();   
     }//GEN-LAST:event_newProductActionPerformed
 
+    private void prodDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prodDeleteActionPerformed
+        if(stockData.getSelectedRow() != -1){
+            this.deleteSelectedProduct(stockData.getSelectedRow());
+            updateStockDataBar();
+            callFeedback("Tipo de produto deletado com sucesso!");
+        } else {
+            callFeedback("Não foi possível deletar o produto!");
+        }
+    }//GEN-LAST:event_prodDeleteActionPerformed
+
+    private void prodRemVolumnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prodRemVolumnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_prodRemVolumnActionPerformed
+
+    private void prodAddVolumn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prodAddVolumn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_prodAddVolumn1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel navBar;
     private java.awt.Button newProduct;
+    private java.awt.Button prodAddVolumn1;
+    private java.awt.Button prodDelete;
+    private java.awt.Button prodRemVolumn;
+    private java.awt.Button prodUpdate1;
     private javax.swing.JLabel productQuantity;
     private javax.swing.JLabel productTypeQuantity;
     private javax.swing.JTable stockData;

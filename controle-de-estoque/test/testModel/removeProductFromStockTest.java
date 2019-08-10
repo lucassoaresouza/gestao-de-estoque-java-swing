@@ -46,14 +46,14 @@ public class removeProductFromStockTest {
     
     @Test
     public void testRemovingProductFromStockTrue() {
-        assertTrue(stock.removeProduct(prod1));
-        assertTrue(stock.removeProduct(prod2));
-        assertTrue(stock.removeProduct(prod3));
+        assertTrue(stock.removeProduct(1));
+        assertTrue(stock.removeProduct(2));
+        assertTrue(stock.removeProduct(3));
     }
     
     @Test
     public void testRemovingProductFromStockFalse(){
-        assertFalse(stock.removeProduct(prod4));
-        assertFalse(stock.removeProduct(prod5));
+        assertFalse(stock.removeProduct(4));
+        assertFalse(stock.removeProduct(5));
     }
 }
