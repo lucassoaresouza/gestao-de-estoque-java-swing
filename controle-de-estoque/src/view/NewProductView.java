@@ -5,6 +5,7 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
 import model.Product;
 
 /**
@@ -196,16 +197,21 @@ public class NewProductView extends javax.swing.JDialog {
         if(getNewProductData()){
             Product newProd = new Product(productReg, productNm, productDscpt, productQntd);
             stockView.newProduct(productReg, productNm, productDscpt, productQntd);
-            //feedback.setVisible(true);
+            callFeedback("Produto cadastrado com sucesso!");
             cleanTextFields();
+            this.setVisible(false);
         } else {
-            // do nothing
+            callFeedback("Houve um problema ao cadastrar o produto!");
         }
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void cancelNewProduct(){
         cleanTextFields();
         this.setVisible(false);
+    }
+    
+    private void callFeedback(String message){
+        JOptionPane.showMessageDialog(null,message);
     }
     
     private void cleanTextFields(){
