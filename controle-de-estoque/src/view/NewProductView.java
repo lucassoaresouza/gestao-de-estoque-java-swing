@@ -67,7 +67,7 @@ public class NewProductView extends javax.swing.JDialog {
         setMaximumSize(new java.awt.Dimension(400, 300));
         setMinimumSize(new java.awt.Dimension(400, 300));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 224));
+        jPanel1.setBackground(new java.awt.Color(220, 220, 220));
         jPanel1.setInheritsPopupMenu(true);
         jPanel1.setMaximumSize(new java.awt.Dimension(400, 300));
         jPanel1.setMinimumSize(new java.awt.Dimension(400, 300));

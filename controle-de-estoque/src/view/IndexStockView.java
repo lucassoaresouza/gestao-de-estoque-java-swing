@@ -87,7 +87,7 @@ public class IndexStockView extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1024, 728));
         setPreferredSize(new java.awt.Dimension(1024, 728));
 
-        navBar.setBackground(new java.awt.Color(222, 184, 135));
+        navBar.setBackground(new java.awt.Color(169, 169, 169));
 
         userNameLabel.setText("Usuário:");
 
@@ -171,9 +171,8 @@ public class IndexStockView extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))
         );
 
-        stockLabel.setBackground(new java.awt.Color(255, 255, 224));
+        stockLabel.setBackground(new java.awt.Color(220, 220, 220));
 
-        stockData.setBackground(new java.awt.Color(255, 255, 224));
         stockData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
