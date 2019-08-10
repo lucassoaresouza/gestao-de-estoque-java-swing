@@ -55,6 +55,8 @@ public class IndexStockView extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         newProduct = new java.awt.Button();
         stockLabel = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        stockData = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle de Stoque");
@@ -149,15 +151,61 @@ public class IndexStockView extends javax.swing.JFrame {
 
         stockLabel.setBackground(new java.awt.Color(255, 255, 224));
 
+        stockData.setBackground(new java.awt.Color(255, 255, 224));
+        stockData.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Registro", "Produto", "Descrição", "Quantidade"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(stockData);
+        if (stockData.getColumnModel().getColumnCount() > 0) {
+            stockData.getColumnModel().getColumn(0).setResizable(false);
+            stockData.getColumnModel().getColumn(0).setPreferredWidth(10);
+            stockData.getColumnModel().getColumn(1).setResizable(false);
+            stockData.getColumnModel().getColumn(1).setPreferredWidth(30);
+            stockData.getColumnModel().getColumn(2).setResizable(false);
+            stockData.getColumnModel().getColumn(2).setPreferredWidth(50);
+            stockData.getColumnModel().getColumn(3).setResizable(false);
+            stockData.getColumnModel().getColumn(3).setPreferredWidth(10);
+        }
+
         javax.swing.GroupLayout stockLabelLayout = new javax.swing.GroupLayout(stockLabel);
         stockLabel.setLayout(stockLabelLayout);
         stockLabelLayout.setHorizontalGroup(
             stockLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1041, Short.MAX_VALUE)
+            .addGap(0, 1194, Short.MAX_VALUE)
+            .addGroup(stockLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, stockLabelLayout.createSequentialGroup()
+                    .addContainerGap(371, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(371, Short.MAX_VALUE)))
         );
         stockLabelLayout.setVerticalGroup(
             stockLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 641, Short.MAX_VALUE)
+            .addGroup(stockLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, stockLabelLayout.createSequentialGroup()
+                    .addContainerGap(107, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(334, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -195,12 +243,14 @@ public class IndexStockView extends javax.swing.JFrame {
     }//GEN-LAST:event_newProductActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPanel navBar;
     private java.awt.Button newProduct;
     private javax.swing.JLabel productQuantity;
     private javax.swing.JLabel productTypeQuantity;
+    private javax.swing.JTable stockData;
     private javax.swing.JPanel stockLabel;
     private javax.swing.JLabel totalProductQuantity;
     private javax.swing.JLabel userName;
