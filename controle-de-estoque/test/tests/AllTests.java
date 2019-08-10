@@ -22,7 +22,8 @@ import org.junit.runners.Suite;
                      tests.addProductToStockTest.class,
                      tests.removeProductFromStockTest.class,
                      tests.UpdateProductVolumnTest.class,
-                     tests.ShowingProductDataTest.class
+                     tests.ShowingProductDataTest.class,
+                     tests.UpdateProductTest.class
                     })
 
 public class AllTests {
