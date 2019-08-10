@@ -17,7 +17,12 @@ import org.junit.runners.Suite;
  * @author lucas-souza
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({testModel.createProductsTest.class, testModel.createProductStockTest.class, testModel.addProductToStockTest.class})
+@Suite.SuiteClasses({testModel.createProductsTest.class, 
+                     testModel.createProductStockTest.class, 
+                     testModel.addProductToStockTest.class,
+                     testModel.removeProductFromStockTest.class,
+                     testModel.UpdateProductVolumnTest.class
+                    })
 public class AllTests {
 
     @BeforeClass
