@@ -18,7 +18,6 @@ public class NewProductView extends javax.swing.JDialog {
      * Creates new form NewProductView
      */
     IndexStockView stockView;
-    //FeedbackView feedback;
     String productReg;
     String productNm;
     String productDscpt;
@@ -26,15 +25,10 @@ public class NewProductView extends javax.swing.JDialog {
     
     public NewProductView(IndexStockView parent, boolean modal) {
         super(parent, modal);
-        //initFeedback(parent);
         stockView = parent;
         initComponents();
         cleanTextFields();
     }
-    
-//    private void initFeedback(IndexStockView parent){
-//        feedback = new FeedbackView(parent, true);
-//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -223,7 +217,7 @@ public class NewProductView extends javax.swing.JDialog {
     
     private boolean getNewProductData(){
         productReg = productRegister.getText();
-        productNm = productRegister.getText();
+        productNm = productName.getText();
         productDscpt = productDescription.getText();
         productQntd = Integer.valueOf(productQuantity.getText());
         return true;

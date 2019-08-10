@@ -50,7 +50,6 @@ public class TableModel extends AbstractTableModel{
     }
     
     public void updateStockDataTable(){
-        System.out.println("AQUI ESTOUUUUUUUUUU");
         this.fireTableDataChanged();
     }
     

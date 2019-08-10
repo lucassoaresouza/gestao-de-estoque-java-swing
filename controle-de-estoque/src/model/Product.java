@@ -16,11 +16,11 @@ public class Product {
     private String description;
     private int quantity;
     
-    public Product(String registration, String name, String description, int quantity){
-        this.registration = registration;
+    public Product(String reg, String name, String dscp, int qt){
+        this.registration = reg;
         this.name = name;
-        this.description = description;
-        this.quantity = quantity;
+        this.description = dscp;
+        this.quantity = qt;
     }
     
     

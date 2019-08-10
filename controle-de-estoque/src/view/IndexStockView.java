@@ -15,37 +15,36 @@ import model.Product;
  */
 public class IndexStockView extends javax.swing.JFrame {
 
-    StockController stockController;
+    StockController stockCtrl;
     
     public IndexStockView() {
-        this.stockController = new StockController(); 
+        this.stockCtrl = new StockController(); 
         initComponents();
         updateUserDataBar();
         updateStockDataBar();
         setResizable(false);
-        stockController.getTableModel().updateStockDataTable();
-        stockData.setModel(stockController.getTableModel());
+        stockCtrl.getTableModel().updateStockDataTable();
+        stockData.setModel(stockCtrl.getTableModel());
         
     }
 
     private void updateUserDataBar(){
-        userName.setText(stockController.getUserName());
-        userRegister.setText(stockController.getUserRegistration());
+        userName.setText(stockCtrl.getUserName());
+        userRegister.setText(stockCtrl.getUserRegistration());
     }
     
     private void updateStockDataBar(){
-        productQuantity.setText(Integer.toString(stockController.getProductQuantity()));
-        volumesQuantity.setText(Integer.toString(stockController.getTotalVolumesQuantity()));
+        productQuantity.setText(Integer.toString(stockCtrl.getProductQuantity()));
+        volumesQuantity.setText(Integer.toString(stockCtrl.getTotalVolumesQuantity()));
     }
     
     private void makeLineStockDataTable(Product prod){
         //stockData
     }
     
-    public void newProduct(String productReg,String productNm, String productDscpt, int productQntd){
-        stockController.addProductToStock(productReg, productNm, productDscpt, productQntd);
-        stockController.getTableModel().updateStockDataTable();
-        System.out.println("Produto adicionado ao estoque");
+    public void newProduct(String prodReg,String prodNm, String prodDscpt, int prodQntd){
+        stockCtrl.addProductToStock(prodReg, prodNm, prodDscpt, prodQntd);
+        stockCtrl.getTableModel().updateStockDataTable();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -238,14 +237,11 @@ public class IndexStockView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void newProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newProductActionPerformed
-        System.out.println("Ta funfando");
         NewProductView newProduct = new NewProductView(this,true);
         newProduct.setResizable(false);
         newProduct.setLocationRelativeTo(null);
         newProduct.setVisible(true);
-        updateStockDataBar();
-        //newProductView.setVisible(true);
-        
+        updateStockDataBar();   
     }//GEN-LAST:event_newProductActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
