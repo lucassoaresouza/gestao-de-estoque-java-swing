@@ -22,7 +22,7 @@ public class StockController {
     private TableModel tableModel;
     
     public StockController(){
-        this.user = new User(11111,"Default User");
+        this.user = new User(1111111,"Usuário Padrão");
         this.stock = ProductStock.getStock();
         this.tableModel = new TableModel();
     }
@@ -37,7 +37,8 @@ public class StockController {
         return Integer.toString(this.user.getRegistration());
     }
     
-    private Product newProduct(String register, String name, String description, int quantity){
+    private Product newProduct(String register, String name, 
+            String description, int quantity){
         try{
             Product prod = new Product(register, name, description, quantity);
             System.out.println("Produto criado com sucesso!");
@@ -48,10 +49,12 @@ public class StockController {
         }   
     }
     
-    public void addProductToStock(String productReg,String productNm, String productDscpt, int productQntd){
+    public void addProductToStock(String productReg,String productNm, 
+            String productDscpt, int productQntd){
         
         try{
-            Product prod = newProduct(productReg, productNm, productDscpt, productQntd);
+            Product prod = newProduct(productReg, productNm, 
+                    productDscpt, productQntd);
             this.stock.addProduct(prod);
             System.out.println("O produto foi adicionado com sucesso!");
         } catch(Exception e){
@@ -92,6 +95,14 @@ public class StockController {
             e.printStackTrace();
             return null;
         }
+    }
+    
+    public void updateProduct(int index, String reg, String nm, 
+            String dscpt, int quantity){
+        this.getProductByIndex(index).setRegistration(reg);
+        this.getProductByIndex(index).setName(nm);
+        this.getProductByIndex(index).setDescription(dscpt);
+        this.getProductByIndex(index).setQuantity(quantity);
     }
     
     public boolean removeProduct(int index){

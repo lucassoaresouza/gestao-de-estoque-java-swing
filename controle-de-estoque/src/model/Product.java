@@ -57,4 +57,20 @@ public class Product {
     public String getDescription(){
         return this.description;
     }
+    
+    public void setName(String name){
+        this.name = name;
+    }
+    
+    public void setDescription(String description){
+        this.description = description;
+    }
+    
+    public void setRegistration(String registration){
+        this.registration = registration;
+    }
+    
+    public void setQuantity(int quantity){
+        this.quantity = quantity;
+    }
 }

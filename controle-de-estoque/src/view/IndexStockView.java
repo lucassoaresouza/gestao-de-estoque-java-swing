@@ -6,7 +6,6 @@
 package view;
 
 import controller.StockController;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.Product;
 
@@ -17,6 +16,7 @@ import model.Product;
 public class IndexStockView extends javax.swing.JFrame {
 
     StockController stockCtrl;
+    int auxIndexRow = -1;
     
     public IndexStockView() {
         this.stockCtrl = new StockController(); 
@@ -35,15 +35,14 @@ public class IndexStockView extends javax.swing.JFrame {
     }
     
     private void updateStockDataBar(){
-        productQuantity.setText(Integer.toString(stockCtrl.getProductQuantity()));
-        volumesQuantity.setText(Integer.toString(stockCtrl.getTotalVolumesQuantity()));
+        productQuantity.setText(Integer.toString(stockCtrl.
+                getProductQuantity()));
+        volumesQuantity.setText(Integer.toString(stockCtrl.
+                getTotalVolumesQuantity()));
     }
     
-    private void makeLineStockDataTable(Product prod){
-        //stockData
-    }
-    
-    public void newProduct(String prodReg,String prodNm, String prodDscpt, int prodQntd){
+    public void newProduct(String prodReg,String prodNm, 
+            String prodDscpt, int prodQntd){
         stockCtrl.addProductToStock(prodReg, prodNm, prodDscpt, prodQntd);
         stockCtrl.getTableModel().addRowStockDataTable();
     }
@@ -229,6 +228,11 @@ public class IndexStockView extends javax.swing.JFrame {
 
         prodUpdate1.setLabel("Atualizar Produto");
         prodUpdate1.setName(""); // NOI18N
+        prodUpdate1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                prodUpdate1ActionPerformed(evt);
+            }
+        });
 
         prodAddVolumn1.setLabel("Adicionar Volume");
         prodAddVolumn1.setName(""); // NOI18N
@@ -308,12 +312,14 @@ public class IndexStockView extends javax.swing.JFrame {
     }//GEN-LAST:event_newProductActionPerformed
 
     private void prodDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prodDeleteActionPerformed
-        if(stockData.getSelectedRow() != -1){
-            this.deleteSelectedProduct(stockData.getSelectedRow());
+        int row = stockData.getSelectedRow();
+        if(row != -1){
+            this.deleteSelectedProduct(row);
+            stockCtrl.getTableModel().deleteDataFromStock(row);
             updateStockDataBar();
             callFeedback("Tipo de produto deletado com sucesso!");
         } else {
-            callFeedback("Não foi possível deletar o produto!");
+            callFeedback("Nenhum produto foi selecionado!");
         }
     }//GEN-LAST:event_prodDeleteActionPerformed
 
@@ -329,7 +335,7 @@ public class IndexStockView extends javax.swing.JFrame {
                         + "um único volume!");
             }
         } else {
-            callFeedback("Nenhuma linha foi selecionada!");
+            callFeedback("Nenhum produto foi selecionado!");
         }
     }//GEN-LAST:event_prodRemVolumnActionPerformed
 
@@ -338,14 +344,36 @@ public class IndexStockView extends javax.swing.JFrame {
     }
     
     private void prodAddVolumn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prodAddVolumn1ActionPerformed
-        if(stockData.getSelectedRow() != -1){
-           stockCtrl.getProductByIndex(stockData.getSelectedRow()).addQuantity();
-           stockCtrl.getTableModel().updateStockDataTable(stockData.getSelectedRow());
+        int row = stockData.getSelectedRow();
+        if(row != -1){
+           stockCtrl.getProductByIndex(row).addQuantity();
+           stockCtrl.getTableModel().updateStockDataTable(row);
            updateStockDataBar();
         } else {
-            callFeedback("Nenhuma linha foi selecionada!");
+            callFeedback("Nenhum produto foi selecionado!");
         }
     }//GEN-LAST:event_prodAddVolumn1ActionPerformed
+
+    public void setUpdatedProduct(Product prod){
+        stockCtrl.updateProduct(auxIndexRow, prod.getRegistration(), 
+                prod.getName(), prod.getDescription(), prod.getQuantity());
+        updateStockDataBar();
+        stockCtrl.getTableModel().updateStockDataTable(auxIndexRow);
+        auxIndexRow = -1;
+        callFeedback("Produto atualizado com sucesso!");
+    }
+    
+    private void prodUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prodUpdate1ActionPerformed
+        int row = stockData.getSelectedRow();
+        NewProductView updateView = new NewProductView(this, true);
+        if(row != -1){
+            auxIndexRow = row;
+            Product prod = stockCtrl.getProductByIndex(row);
+            updateView.updateProductData(row, prod);
+        } else {
+            callFeedback("Nenhum produto foi selecionado!");
+        }
+    }//GEN-LAST:event_prodUpdate1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;

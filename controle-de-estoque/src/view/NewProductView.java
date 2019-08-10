@@ -22,11 +22,15 @@ public class NewProductView extends javax.swing.JDialog {
     String productNm;
     String productDscpt;
     int productQntd;
+    int auxIndexRow;
     
     public NewProductView(IndexStockView parent, boolean modal) {
         super(parent, modal);
         stockView = parent;
         initComponents();
+        title.setText("Registrar Novo Produto");
+        saveButton.setVisible(true);
+        updateButton.setVisible(false);
         cleanTextFields();
     }
 
@@ -54,6 +58,7 @@ public class NewProductView extends javax.swing.JDialog {
         jScrollPane4 = new javax.swing.JScrollPane();
         productDescription = new javax.swing.JTextPane();
         cancelButton = new java.awt.Button();
+        updateButton = new java.awt.Button();
         saveButton = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -93,6 +98,14 @@ public class NewProductView extends javax.swing.JDialog {
             }
         });
 
+        updateButton.setLabel("Atualizar");
+        updateButton.setVisible(false);
+        updateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateButtonActionPerformed(evt);
+            }
+        });
+
         saveButton.setLabel("Salvar");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,6 +128,8 @@ public class NewProductView extends javax.swing.JDialog {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -155,6 +170,7 @@ public class NewProductView extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29))
         );
@@ -187,8 +203,21 @@ public class NewProductView extends javax.swing.JDialog {
         cancelNewProduct();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
+    private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
+        Product prod = new Product("registro","nome","descricao",1);
+        getNewProductData();
+        prod.setDescription(productDscpt);
+        prod.setName(productNm);
+        prod.setQuantity(productQntd);
+        prod.setRegistration(productReg);
+        updateButton.setVisible(false);
+        this.cleanTextFields();
+        this.setVisible(false);
+        stockView.setUpdatedProduct(prod);
+    }//GEN-LAST:event_updateButtonActionPerformed
+
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        if(getNewProductData()){
+          if(getNewProductData()){
             Product newProd = new Product(productReg, productNm, productDscpt, productQntd);
             stockView.newProduct(productReg, productNm, productDscpt, productQntd);
             callFeedback("Produto cadastrado com sucesso!");
@@ -221,6 +250,18 @@ public class NewProductView extends javax.swing.JDialog {
         productDscpt = productDescription.getText();
         productQntd = Integer.valueOf(productQuantity.getText());
         return true;
+    }
+    
+    public void updateProductData(int index, Product prod){
+        updateButton.setVisible(true);
+        saveButton.setVisible(false);
+        title.setText("Atualizar Produto");
+        productRegister.setText(prod.getRegistration());
+        productName.setText(prod.getName());
+        productDescription.setText(prod.getDescription());
+        productQuantity.setText(Integer.toString(prod.getQuantity()));
+        auxIndexRow = index;
+        this.setVisible(true);
     }
     /**
      * @param args the command line arguments
@@ -282,5 +323,6 @@ public class NewProductView extends javax.swing.JDialog {
     private javax.swing.JLabel registerLabel;
     private java.awt.Button saveButton;
     private javax.swing.JLabel title;
+    private java.awt.Button updateButton;
     // End of variables declaration//GEN-END:variables
 }
