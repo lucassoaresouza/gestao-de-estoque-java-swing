@@ -5,8 +5,10 @@
  */
 package controller;
 
+import java.util.ArrayList;
 import model.Product;
 import model.ProductStock;
+import model.TableModel;
 import model.User;
 
 /**
@@ -17,10 +19,12 @@ public class StockController {
     
     private User user;
     private ProductStock stock;
+    private TableModel tableModel;
     
     public StockController(){
         this.user = new User(11111,"Default User");
         this.stock = ProductStock.getStock();
+        this.tableModel = new TableModel();
     }
     
     public void stockIndex(){}
@@ -70,6 +74,14 @@ public class StockController {
         } else {
             return 0;
         }
+    }
+    
+    public ArrayList<Product> getAllProducts(){
+        return stock.getProducts();
+    }
+    
+    public TableModel getTableModel(){
+        return this.tableModel;
     }
     
 }

@@ -6,6 +6,7 @@
 package view;
 
 import controller.StockController;
+import java.util.ArrayList;
 import model.Product;
 
 /**
@@ -22,20 +23,28 @@ public class IndexStockView extends javax.swing.JFrame {
         updateUserDataBar();
         updateStockDataBar();
         setResizable(false);
+        stockController.getTableModel().updateStockDataTable();
+        stockData.setModel(stockController.getTableModel());
+        
     }
 
-    public void updateUserDataBar(){
+    private void updateUserDataBar(){
         userName.setText(stockController.getUserName());
         userRegister.setText(stockController.getUserRegistration());
     }
     
-    public void updateStockDataBar(){
+    private void updateStockDataBar(){
         productQuantity.setText(Integer.toString(stockController.getProductQuantity()));
         volumesQuantity.setText(Integer.toString(stockController.getTotalVolumesQuantity()));
     }
     
+    private void makeLineStockDataTable(Product prod){
+        //stockData
+    }
+    
     public void newProduct(String productReg,String productNm, String productDscpt, int productQntd){
         stockController.addProductToStock(productReg, productNm, productDscpt, productQntd);
+        stockController.getTableModel().updateStockDataTable();
         System.out.println("Produto adicionado ao estoque");
     }
     @SuppressWarnings("unchecked")
@@ -175,6 +184,7 @@ public class IndexStockView extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        stockData.setGridColor(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(stockData);
         if (stockData.getColumnModel().getColumnCount() > 0) {
             stockData.getColumnModel().getColumn(0).setResizable(false);
@@ -191,21 +201,17 @@ public class IndexStockView extends javax.swing.JFrame {
         stockLabel.setLayout(stockLabelLayout);
         stockLabelLayout.setHorizontalGroup(
             stockLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1194, Short.MAX_VALUE)
-            .addGroup(stockLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, stockLabelLayout.createSequentialGroup()
-                    .addContainerGap(371, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(371, Short.MAX_VALUE)))
+            .addGroup(stockLabelLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 913, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         stockLabelLayout.setVerticalGroup(
             stockLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 641, Short.MAX_VALUE)
-            .addGroup(stockLabelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, stockLabelLayout.createSequentialGroup()
-                    .addContainerGap(107, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(334, Short.MAX_VALUE)))
+            .addGroup(stockLabelLayout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
